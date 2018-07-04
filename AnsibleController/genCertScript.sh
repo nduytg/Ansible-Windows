@@ -1,5 +1,6 @@
 # set the name of the local user that will have the key mapped to
-USERNAME="duynd3"
+# This is the local admin user on windows hosts
+USERNAME="userAdminLocal"
 
 cat > openssl.conf << EOL
 distinguished_name = req_distinguished_name
