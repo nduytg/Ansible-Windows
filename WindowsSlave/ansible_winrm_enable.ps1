@@ -8,8 +8,8 @@ Remove-Item C:\ansible_winrm\createAdminAccount.ps1
 powershell C:\ansible_winrm\import_cert.ps1
 Remove-Item C:\ansible_winrm\import_cert.ps1
 
-# Cai dat winrm - quiet mode + HTTPS + listen on private IP
-#winrm quickconfig -quiet -transport:https
+# Disable chung thuc bang Basic
+winrm set winrm/config/service/auth '@{Basic="true"}'
 
 # Allow chung thuc bang Certificate (tuong tu nhu RSA Key Pair)
 winrm set winrm/config/service/auth '@{Certificate="true"}'
