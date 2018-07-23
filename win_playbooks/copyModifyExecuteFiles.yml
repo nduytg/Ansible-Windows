@@ -1,0 +1,18 @@
+- name: Copy, modify and executes Python files
+  hosts: win-test
+  tasks:
+    - name: Copy upgrade scripts to windows hosts
+      win_copy:
+        src: /home/nduytg/dosomething.py
+        dest: C:\Users\nduytg\dosomething.py
+
+    - name: add IP to hosts
+      win_lineinfile:
+        path: C:\Users\nduytg\dosomething.py
+        regexp: '^1\.1\.1\.5 abc\.xyz\.com\.vn'
+        line: '1.1.1.5 abc.xyz.com.vn'
+
+    - name: Install 
+      win_shell: C:\Python27\python C:\Users\nduytg\dosomething.py
+
+
