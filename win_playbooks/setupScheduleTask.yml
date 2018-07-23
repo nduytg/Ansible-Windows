@@ -1,0 +1,38 @@
+- name: Setup Schedule Task
+  hosts: win-test
+  tasks:
+   - name: Create directory structure
+     win_file:
+        path: C:\Users\nduytg\BackupScripts
+        state: directory
+
+   - name: Copy backup script
+     win_copy:
+        src: /home/nduytg/RandomTasks/scriptDoSomeThing.ps1
+        dest: C:\Users\nduytg\BackupScripts\scriptDoSomeThing.ps1
+
+   - name: Install Rsync by chocolatey
+     win_chocolatey:
+        name: rsync
+        state: latest
+
+   - name: Setup Schedule Task
+     win_scheduled_task:
+        name: Backup log GameServer Daily
+        author: nduytg
+        path: \VNG
+        description: Backup log GameServer Daily
+        
+        actions:
+        - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+          arguments: -ExecutionPolicy Unrestricted -NonInteractive -File C:\Users\nduytg\BackupScripts\scriptDoSomeThing.ps1
+
+        triggers:
+        - type: daily
+          start_boundary: '2018-07-03T05:30:00'
+        start_when_available: yes 
+        state: present
+        enabled: yes
+        user: nduytg
+        password: Password123
+        runlevel: highest

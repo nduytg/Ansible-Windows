@@ -1,0 +1,14 @@
+- name: Update Windows (Security, Critical, Rollup update)
+  hosts: win-test
+  tasks:
+    - name: Install all security, critical, and rollup updates
+      win_updates:
+        category_names:
+         - SecurityUpdates
+         - CriticalUpdates
+         - UpdatesRollups
+        name: notepadplusplus
+        state: latest
+        reboot: no
+
+

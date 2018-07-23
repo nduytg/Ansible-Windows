@@ -1,0 +1,5 @@
+- name: Test python from powershell
+  hosts: win-test
+  tasks:
+    - name: Test run python by powershell
+      win_shell: C:\Python27\python --version

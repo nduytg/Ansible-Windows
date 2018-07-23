@@ -1,0 +1,8 @@
+- name: Reboot Windows
+  hosts: win-test
+  tasks:
+    - name: Reboot Windows - Timeout: 900s
+      win_reboot:
+        reboot_timeout: 900
+
+

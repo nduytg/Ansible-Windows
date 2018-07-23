@@ -1,0 +1,8 @@
+- name: Install PIP, notepad++ from chocolatey
+  hosts: win-db
+  tasks:
+    - name: Install Notepad++
+      win_chocolatey:
+        name: notepadplusplus
+        state: latest
+

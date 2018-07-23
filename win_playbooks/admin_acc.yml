@@ -1,0 +1,10 @@
+- name: Ensure user test is present
+  hosts: windows
+  tasks:
+    - name: Create test account
+      win_user:
+        name: test
+        password: Password123
+        state: present
+        groups:
+          - Administrators
