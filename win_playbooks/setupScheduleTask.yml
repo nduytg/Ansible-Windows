@@ -20,7 +20,7 @@
      win_scheduled_task:
         name: Backup log GameServer Daily
         author: nduytg
-        path: \VNG
+        path: \Tasks
         description: Backup log GameServer Daily
         
         actions:
